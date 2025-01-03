@@ -7,7 +7,7 @@
     --color-base2: #57BA98;;
     --color-brand: #dbfa5d;
     --color-brand2: #deff58;
-    --sidbar-width: 240px;
+    --sidbar-width: 210px;
     --font-base: "bai jamjuree";
 }
 
@@ -37,7 +37,7 @@ a:hover {
 
 img {
     width: 100%;
-    justify-items: center;
+    justify-content: center;
     }
 .text-brand{
     color: var(--color-brand);
