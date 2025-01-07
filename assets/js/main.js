@@ -55,3 +55,26 @@ const typed = new Typed('.multiple-text', {
   backDelay: 1000,
   loop: true,
 })
+
+function toggleContent(element) {
+    const card = element.closest('.card-custom');
+    const content = card.querySelector('.card-custom-content');
+    const image = card.querySelector('.card-custom-image img');
+
+    // Check the current state and toggle accordingly
+    if (content.classList.contains('visible-content')) {
+        // Hide content and show image
+        content.classList.remove('visible-content');
+        content.classList.add('hidden-content');
+        card.classList.remove('clicked');
+        card.classList.add('clicked-reverted');
+        image.style.opacity = "1"; // Show image
+    } else {
+        // Show content and hide image
+        content.classList.remove('hidden-content');
+        content.classList.add('visible-content');
+        card.classList.remove('clicked-reverted');
+        card.classList.add('clicked');
+        image.style.opacity = "0"; // Hide image
+    }
+}

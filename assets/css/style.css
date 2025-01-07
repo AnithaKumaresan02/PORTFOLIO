@@ -1,9 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&display=swap');
 
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 :root {
     --color-body: #04090a;
     --color-heading: #eef3db;
-    --color-base: #30a09c;
+    --color-base: #65CCB8;
     --color-base2: #57BA98;;
     --color-brand: #dbfa5d;
     --color-brand2: #deff58;
@@ -115,6 +121,8 @@ img {
         border: 8px solid var(--color-brand);
     }
 
+    
+
 
     /* CONTENT WRAPPER */
     #content-wrapper {
@@ -160,19 +168,106 @@ img {
 .link-custom:hover::after {
     width: 100%;
 }
-
 /* CARD */
+.card-custom {
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card-custom:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
 .card-custom .card-custom-image {
     overflow: hidden;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: opacity 0.4s ease;
 }
 
 .card-custom .card-custom-image img {
-    transition: all 0.4s ease;
+    width: 100%;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    opacity: 1; /* Image is visible initially */
 }
 
-.card-custom:hover .card-custom-image img {
-    transform: scale(1.1);
+.card-custom-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-base);
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.4s ease, max-height 0.4s ease, visibility 0s 0.4s;
 }
+
+.card-custom-content.hidden-content {
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+}
+
+.card-custom-content.visible-content {
+    opacity: 1;
+    visibility: visible;
+    max-height: 300px; /* Adjust based on content size */
+    transition: opacity 0.4s ease, max-height 0.4s ease, visibility 0s 0s;
+}
+
+.card-custom h4 {
+    color: #deff58;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    transition: color 0.4s ease;
+}
+
+.card-custom p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.card-custom a {
+    font-size: 1rem;
+    color: var(--color-brand) ;
+    text-decoration: none;
+    transition: color 0.4s ease;
+}
+
+.card-custom a:hover {
+    color: var(--color-brand);
+    text-decoration: underline;
+}
+
+/* When clicked, hide the image and show the content */
+.card-custom.clicked .card-custom-image img {
+    opacity: 0; /* Hide image */
+}
+
+.card-custom.clicked .card-custom-content {
+    opacity: 1;
+    visibility: visible;
+    max-height: 300px;
+    transition: opacity 0.4s ease, max-height 0.4s ease, visibility 0s 0s;
+}
+
+/* When clicked again, reset to show image and hide content */
+.card-custom.clicked-reverted .card-custom-image img {
+    opacity: 1; /* Show image */
+}
+
+.card-custom.clicked-reverted .card-custom-content {
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+}
+
+
 
 /* CONTACT */
 #contact .form-control {
@@ -243,3 +338,17 @@ img {
 #scrollToTopBtn.show {
     display: block;
 }
+
+.navbar-nav .nav-link {
+    font-weight: bold !important;
+    color: #fff !important;
+}
+@media (max-width: 991px) {
+    .navbar-collapse {
+        text-align: center;
+    }
+    .nav-link {
+        margin: 5px 0; /* Add spacing between links */
+    }
+}
+
