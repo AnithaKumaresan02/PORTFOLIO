@@ -267,6 +267,12 @@ img {
     max-height: 0;
 }
 
+#about .about-me {
+    min-height: 300px; /* Set a consistent minimum height for all blocks */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
 
 /* CONTACT */
